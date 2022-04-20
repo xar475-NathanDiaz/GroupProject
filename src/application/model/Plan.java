@@ -12,4 +12,11 @@ class Plan{
 	int days;
 	int time;
 	planType type;
+
+	public Plan(String name, int days, int time, planType type){
+		this.name = name;
+		this.days = days;
+		this.time = time;
+		this.type = type;
+	}
 }
