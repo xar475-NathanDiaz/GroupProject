@@ -7,19 +7,19 @@ import javafx.scene.control.TextField;
 
 public class ProfileController {
 
-    @FXML
-    private TextField nameField;
+	@FXML
+	private TextField nameField;
 
-    @FXML
-    private TextField gpaField;
+	@FXML
+	private TextField gpaField;
 
-    @FXML
-    private Button editBttn;
+	@FXML
+	private Button editBttn;
 
-    @FXML
-    private ListView<?> assignmentList;
+	@FXML
+	private ListView<?> assignmentList;
 
-    @FXML
-    private ListView<?> scheduleList;
+	@FXML
+	private ListView<?> scheduleList;
 
 }
