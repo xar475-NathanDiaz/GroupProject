@@ -35,7 +35,7 @@ public class MainController implements Initializable{
 	void openProfile(ActionEvent event) {
 		try {
 			BrowserData.prevMenu = 0;
-			BrowserData.menuType = 0;
+			BrowserData.menuType = 1;
 			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -52,7 +52,7 @@ public class MainController implements Initializable{
 	void openSchedule(ActionEvent event) {
 		try {
 			BrowserData.prevMenu = 0;
-			BrowserData.menuType = 1;
+			BrowserData.menuType = 0;
 			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
