@@ -1,5 +1,7 @@
 package application.model;
 
+import java.util.ArrayList;
+
 public class BrowserData {
 	/**
 	 * this is a int that represents the previous menu for the back button
@@ -15,4 +17,11 @@ public class BrowserData {
 	 * 1=Profiles
 	 */
 	public static int menuType;
+
+	/**
+	 * this method finds 
+	 */
+	public static ArrayList<String> initItemList() {
+		return null;
+	}
 }
