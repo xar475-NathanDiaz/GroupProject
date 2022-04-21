@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.model.BrowserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,9 @@ public class MainController implements Initializable{
 	@FXML
 	void openProfile(ActionEvent event) {
 		try {
-			URL url = new File("src/application/view/Profile.fxml").toURI().toURL();
+			BrowserData.prevMenu = 0;
+			BrowserData.menuType = 0;
+			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
@@ -48,7 +51,9 @@ public class MainController implements Initializable{
 	@FXML
 	void openSchedule(ActionEvent event) {
 		try {
-			URL url = new File("src/application/view/Schedule.fxml").toURI().toURL();
+			BrowserData.prevMenu = 0;
+			BrowserData.menuType = 1;
+			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);

@@ -7,23 +7,23 @@ import javafx.scene.control.ListView;
 
 public class BrowserController {
 
-    @FXML
-    private Button backBttn;
+	@FXML
+	private Button backBttn;
 
-    @FXML
-    private ListView<?> itemList;
+	@FXML
+	private ListView<String> itemList;
 
-    @FXML
-    private Button openBttn;
+	@FXML
+	private Button openBttn;
 
-    @FXML
-    void openItem(ActionEvent event) {
+	@FXML
+	void openItem(ActionEvent event) {
 
-    }
+	}
 
-    @FXML
-    void prevMenu(ActionEvent event) {
+	@FXML
+	void prevMenu(ActionEvent event) {
 
-    }
+	}
 
 }
