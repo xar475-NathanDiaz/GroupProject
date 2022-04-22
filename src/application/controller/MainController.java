@@ -1,19 +1,22 @@
 package application.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
+import java.util.ResourceBundle;
 
+import application.model.BrowserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MainController {
+public class MainController implements Initializable{
 
 	@FXML
 	private AnchorPane anchor;
@@ -33,18 +36,41 @@ public class MainController {
 	}
 
 	@FXML
-	void openProfile(ActionEvent event) throws IOException {
-		URL url = new File("src/application/view/Profile.fxml").toURI().toURL();
-    		anchor = FXMLLoader.load(url);
-    		Scene scene = new Scene(anchor);
-    		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    		window.setScene(scene);
-    		window.show();
+	void openProfile(ActionEvent event) {
+		try {
+			BrowserData.prevMenu = 0;
+			BrowserData.menuType = 1;
+			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
+			Parent root = FXMLLoader.load(url);
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			window.setScene(scene);
+			window.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	void openSchedule(ActionEvent event) {
+		try {
+			BrowserData.prevMenu = 0;
+			BrowserData.menuType = 0;
+			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
+			Parent root = FXMLLoader.load(url);
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			window.setScene(scene);
+			window.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
 	}
 
 }
