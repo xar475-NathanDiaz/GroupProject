@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -30,21 +31,25 @@ public class ProfileController {
 	private Button editBttn;
 
 	@FXML
-	private ListView<?> assignmentList;
+	private ListView<String> assignmentList;
 
 	@FXML
-	private ListView<?> scheduleList;
+	private ListView<String> scheduleList;
 	
 	@FXML
-   	private Button MainMenuButton;
+   	private Button mainBttn;
 
-    	@FXML
-    	void handelMainMenu(ActionEvent event) throws IOException {
-    		URL url = new File("src/application/view/Main.fxml").toURI().toURL();
-		anchor = FXMLLoader.load(url);
-		Scene scene = new Scene(anchor);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+    @FXML
+    private void mainMenu(ActionEvent event) throws IOException {
+		try {
+			URL url = new File("src/application/view/Main.fxml").toURI().toURL();
+			Parent root = FXMLLoader.load(url);
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(new Scene(root));
+			window.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
 }
