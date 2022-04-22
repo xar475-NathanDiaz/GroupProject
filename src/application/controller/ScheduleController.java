@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ScheduleController implements Initializable{
@@ -28,6 +29,9 @@ public class ScheduleController implements Initializable{
 
 	@FXML
 	private Button browserBttn;
+
+    @FXML
+    private HBox daysBar;
 
 	@FXML
 	private ToggleButton sunBttn;
@@ -57,6 +61,11 @@ public class ScheduleController implements Initializable{
 	void addPlan(ActionEvent event) {
 
 	}
+
+    @FXML
+    void changeDayView(ActionEvent event) {
+		String bttnLabel = ((ToggleButton)event.getSource()).getText();
+    }
 
 	@FXML
 	void mainMenu(ActionEvent event) {

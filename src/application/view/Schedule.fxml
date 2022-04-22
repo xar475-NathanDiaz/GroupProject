@@ -19,39 +19,39 @@
       <Button fx:id="browserBttn" layoutX="14.0" layoutY="329.0" mnemonicParsing="false" onAction="#openBrowser" text="Select new schedule" />
       <SplitPane dividerPositions="0.07035175879396985" layoutX="214.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="386.0">
         <items>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="daysBar" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ToggleButton fx:id="sunBttn" mnemonicParsing="false" text="Sunday">
+                  <ToggleButton fx:id="sunBttn" mnemonicParsing="false" onAction="#changeDayView" text="Sunday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="monBttn" mnemonicParsing="false" text="Monday">
+                  <ToggleButton fx:id="monBttn" mnemonicParsing="false" onAction="#changeDayView" text="Monday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="tuesBttn" mnemonicParsing="false" text="Tuesday">
+                  <ToggleButton fx:id="tuesBttn" mnemonicParsing="false" onAction="#changeDayView" text="Tuesday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="wedBttn" mnemonicParsing="false" text="Wednesday">
+                  <ToggleButton fx:id="wedBttn" mnemonicParsing="false" onAction="#changeDayView" text="Wednesday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="thursBttn" mnemonicParsing="false" text="Thrursday">
+                  <ToggleButton fx:id="thursBttn" mnemonicParsing="false" onAction="#changeDayView" text="Thrursday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="friBttn" mnemonicParsing="false" text="Friday">
+                  <ToggleButton fx:id="friBttn" mnemonicParsing="false" onAction="#changeDayView" text="Friday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="satBttn" mnemonicParsing="false" text="Saturday">
+                  <ToggleButton fx:id="satBttn" mnemonicParsing="false" onAction="#changeDayView" text="Saturday">
                      <font>
                         <Font size="10.0" />
                      </font>
