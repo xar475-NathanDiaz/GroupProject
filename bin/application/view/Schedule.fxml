@@ -21,37 +21,37 @@
         <items>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ToggleButton mnemonicParsing="false" text="Sunday">
+                  <ToggleButton fx:id="sunBttn" mnemonicParsing="false" text="Sunday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Monday">
+                  <ToggleButton fx:id="monBttn" mnemonicParsing="false" text="Monday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Tuesday">
+                  <ToggleButton fx:id="tuesBttn" mnemonicParsing="false" text="Tuesday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Wednesday">
+                  <ToggleButton fx:id="wedBttn" mnemonicParsing="false" text="Wednesday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Thrursday">
+                  <ToggleButton fx:id="thursBttn" mnemonicParsing="false" text="Thrursday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Friday">
+                  <ToggleButton fx:id="friBttn" mnemonicParsing="false" text="Friday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" text="Saturday">
+                  <ToggleButton fx:id="satBttn" mnemonicParsing="false" text="Saturday">
                      <font>
                         <Font size="10.0" />
                      </font>
