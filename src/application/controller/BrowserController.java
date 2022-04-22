@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.model.BrowserData;
+import application.model.Profile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,7 +44,14 @@ public class BrowserController implements Initializable{
 		}
 		try {
 			//if the menuType is 0, load Schedule.fxml, else load Profile.fxml
-			URL url = (BrowserData.menuType==0)?new File("src/application/view/Schedule.fxml").toURI().toURL():new File("src/application/view/Profile.fxml").toURI().toURL();
+			URL url;
+			if(BrowserData.menuType==0){
+				url = new File("src/application/view/Schedule.fxml").toURI().toURL();
+				//TODO: insert the file to be loaded to the schedule model class
+			}else{
+				url = new File("src/application/view/Profile.fxml").toURI().toURL();
+				Profile.loadFile = "data/"+selectedItem;
+			}
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(new Scene(root));
@@ -55,6 +63,8 @@ public class BrowserController implements Initializable{
 	}
 
 	//TODO: when going back to the previous menu, need to load the data the program displaying too
+	//if loadFile wasn't changed since last time, then this might not be a problem
+	//can't guarantee this however
 	@FXML
 	void prevMenu(ActionEvent event) {
 		int prevMenu = BrowserData.prevMenu;
