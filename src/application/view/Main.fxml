@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -20,5 +21,15 @@
       <Button fx:id="createScheduleBttn" layoutX="234.0" layoutY="206.0" mnemonicParsing="false" onAction="#createSchedule" text="Create a new schedule" />
       <Button fx:id="openScheduleBttn" layoutX="235.0" layoutY="246.0" mnemonicParsing="false" onAction="#openSchedule" text="Open a new schedule" />
       <Button fx:id="profileBttn" layoutX="254.0" layoutY="283.0" mnemonicParsing="false" onAction="#openProfile" text="Open a profile" />
+      <ImageView fitHeight="178.0" fitWidth="165.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../study.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="130.0" fitWidth="125.0" layoutX="437.0" layoutY="32.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../planner.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
