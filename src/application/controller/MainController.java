@@ -63,7 +63,6 @@ public class MainController implements Initializable{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
