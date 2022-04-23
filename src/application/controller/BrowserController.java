@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import application.model.BrowserData;
 import application.model.Profile;
+import application.model.Schedule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,7 +48,7 @@ public class BrowserController implements Initializable{
 			URL url;
 			if(BrowserData.menuType==0){
 				url = new File("src/application/view/Schedule.fxml").toURI().toURL();
-				//TODO: insert the file to be loaded to the schedule model class
+				Schedule.loadFile = "data/"+selectedItem;
 			}else{
 				url = new File("src/application/view/Profile.fxml").toURI().toURL();
 				Profile.loadFile = "data/"+selectedItem;

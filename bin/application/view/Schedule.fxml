@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -9,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ScheduleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ScheduleController">
    <children>
       <Label fx:id="schedName" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="181.0">
          <font>
@@ -22,37 +26,37 @@
         <items>
             <HBox fx:id="daysBar" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ToggleButton fx:id="sunBttn" mnemonicParsing="false" onAction="#changeDayView" text="Sunday">
+                  <ToggleButton fx:id="sunBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="60.0" text="Sunday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="monBttn" mnemonicParsing="false" onAction="#changeDayView" text="Monday">
+                  <ToggleButton fx:id="monBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="60.0" text="Monday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="tuesBttn" mnemonicParsing="false" onAction="#changeDayView" text="Tuesday">
+                  <ToggleButton fx:id="tuesBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="60.0" text="Tuesday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="wedBttn" mnemonicParsing="false" onAction="#changeDayView" text="Wednesday">
+                  <ToggleButton fx:id="wedBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="74.0" text="Wednesday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="thursBttn" mnemonicParsing="false" onAction="#changeDayView" text="Thrursday">
+                  <ToggleButton fx:id="thursBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="66.0" text="Thrursday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="friBttn" mnemonicParsing="false" onAction="#changeDayView" text="Friday">
+                  <ToggleButton fx:id="friBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="60.0" text="Friday">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="satBttn" mnemonicParsing="false" onAction="#changeDayView" text="Saturday">
+                  <ToggleButton fx:id="satBttn" mnemonicParsing="false" onAction="#changeDayView" prefWidth="61.0" text="Saturday">
                      <font>
                         <Font size="10.0" />
                      </font>

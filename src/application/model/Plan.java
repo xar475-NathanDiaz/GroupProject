@@ -33,11 +33,22 @@ class Plan{
 	int time;
 	planType type;
 
+	public Plan(){
+	}
+
 	public Plan(String name, int days, int time, planType type){
 		this.name = name;
 		this.days = days;
 		this.time = time;
 		this.type = type;
+	}
+
+	public String getName(){
+		return this.name;
+	}
+
+	public void setName(String name){
+		this.name = name;
 	}
 
 	/**
@@ -71,12 +82,12 @@ class Plan{
 	}
 
 	/**
-	 * @param fileString A string representing days of the week that was read from a schedule file
+	 * @param dayString A string representing days of the week that was read from a schedule file
 	 * @return A int that represents days that will be stored in 
 	 */
-	public int getDaysFromFileString(String fileString){
+	public void setDaysFromString(String dayString){
 		int dayNum = 0;
-		for (char i : fileString.toCharArray()) {
+		for (char i : dayString.toCharArray()) {
 			if(i=='U'){
 				dayNum = dayNum|SUN;
 			}
@@ -99,7 +110,71 @@ class Plan{
 				dayNum = dayNum|SAT;
 			}
 		}
-		return dayNum;
+		this.days = dayNum;
+	}
+
+	public int getTime(){
+		return this.time;
+	}
+
+	public String getTimeString(){
+		int minutes = this.time%60;
+		int hours = (this.time/60)%60;
+		String timeString = Integer.toString(hours) + ":" + Integer.toString(minutes);
+		return timeString;
+	}
+
+	public void setTime(int time){
+		this.time = time;
+	}
+
+	public void setTimeFromString(String timeString){
+		String[] digits = timeString.split(":");
+		int hours;
+		int minutes;
+		//digits should only be 2 elements large if the string was formatted correctly
+		try {
+			hours = Integer.valueOf(digits[0]);
+		} catch (NumberFormatException e) {
+			hours = 0;
+		}
+		try {
+			minutes = Integer.valueOf(digits[1]);
+		} catch (NumberFormatException e) {
+			minutes = 0;
+		}
+		this.time =  hours*60+minutes;
+	}
+
+	public String getPlanTypeAsString(){
+		switch(this.type){
+			case COURSE:
+				return "course";
+			case STUDY:
+				return "study";
+			case ASSIGN:
+				return "assignment";
+			case EXAM:
+				return "exam";
+			case EXTRACURR:
+				return "extracurricular";
+			default:
+				return "";
+		}
+	}
+
+	public void setPlanFromString(String typeString){
+		if(typeString.equals("course")){
+			this.type = planType.COURSE;
+		}else if(typeString.equals("study")){
+			this.type = planType.STUDY;
+		}else if(typeString.equals("assignment")){
+			this.type = planType.ASSIGN;
+		}else if(typeString.equals("exam")){
+			this.type = planType.EXAM;
+		}else if(typeString.equals("extracurricular")){
+			this.type = planType.EXTRACURR;
+		}
 	}
 
 	/**
@@ -127,34 +202,5 @@ class Plan{
 		}
 		objString = objString + getDaysString() + " at " + getTimeString();
 		return objString;
-	}
-
-	public int getTime(){
-		return this.time;
-	}
-
-	public String getTimeString(){
-		int minutes = this.time%60;
-		int hours = (this.time/60)%60;
-		String timeString = Integer.toString(hours) + ":" + Integer.toString(minutes);
-		return timeString;
-	}
-
-	public int getTimeFromString(String timeString){
-		String[] digits = timeString.split(":");
-		int hours;
-		int minutes;
-		//digits should only be 2 elements large if the string was formatted correctly
-		try {
-			hours = Integer.valueOf(digits[0]);
-		} catch (NumberFormatException e) {
-			hours = 0;
-		}
-		try {
-			minutes = Integer.valueOf(digits[1]);
-		} catch (NumberFormatException e) {
-			minutes = 0;
-		}
-		return hours*60+minutes;
 	}
 }

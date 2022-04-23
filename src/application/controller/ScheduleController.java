@@ -5,6 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.model.BrowserData;
+import application.model.Schedule;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +17,14 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ScheduleController implements Initializable{
+	private Schedule currSchedule;
 
 	@FXML
 	private Label schedName;
@@ -54,12 +59,23 @@ public class ScheduleController implements Initializable{
 	@FXML
 	private ToggleButton satBttn;
 
+    @FXML
+    private ListView<String> planView;
+
 	@FXML
 	private Button mainBttn;
 
 	@FXML
 	void addPlan(ActionEvent event) {
-
+		try {
+			URL url = new File("src/application/view/Planner.fxml").toURI().toURL();
+			Parent root = FXMLLoader.load(url);
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(new Scene(root));
+			window.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
     @FXML
@@ -108,5 +124,9 @@ public class ScheduleController implements Initializable{
 		friBttn.setToggleGroup(group);
 		satBttn.setToggleGroup(group);
 		sunBttn.setSelected(true);
+		currSchedule = new Schedule();
+		ObservableList<String> planList = FXCollections.observableArrayList();
+		planList.addAll(currSchedule.listPlanNames());
+		planView.setItems(planList);
 	}
 }
