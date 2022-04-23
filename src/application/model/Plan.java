@@ -28,7 +28,7 @@ class Plan{
 	int days;
 	/**
 	 * time will be an integer that represents the time the plan takes place
-	 * time is in seconds from midnight
+	 * time is in minutes from midnight
 	 */
 	int time;
 	planType type;
@@ -134,10 +134,27 @@ class Plan{
 	}
 
 	public String getTimeString(){
-		int seconds = this.time%60;
-		int minutes = (this.time/60)%60;
-		int hours = (this.time/3600)%60;
-		String timeString = Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Integer.toString(seconds);
+		int minutes = this.time%60;
+		int hours = (this.time/60)%60;
+		String timeString = Integer.toString(hours) + ":" + Integer.toString(minutes);
 		return timeString;
+	}
+
+	public int getTimeFromString(String timeString){
+		String[] digits = timeString.split(":");
+		int hours;
+		int minutes;
+		//digits should only be 2 elements large if the string was formatted correctly
+		try {
+			hours = Integer.valueOf(digits[0]);
+		} catch (NumberFormatException e) {
+			hours = 0;
+		}
+		try {
+			minutes = Integer.valueOf(digits[1]);
+		} catch (NumberFormatException e) {
+			minutes = 0;
+		}
+		return hours*60+minutes;
 	}
 }
