@@ -1,0 +1,7 @@
+schedule
+course,course name 1,MWF,540
+course,course name 2,MWF,840
+course,course name 3,MWF,900
+course,course name 4,F,930
+exam,exam name,T,660
+assignment,assign name 1,S,1439
