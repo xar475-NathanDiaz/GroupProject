@@ -81,6 +81,27 @@ public class ScheduleController implements Initializable{
     @FXML
     void changeDayView(ActionEvent event) {
 		String bttnLabel = ((ToggleButton)event.getSource()).getText();
+		ObservableList<String> planList = FXCollections.observableArrayList();
+		char dayInitial;
+		if(bttnLabel.equals("Sunday")){
+			dayInitial = 'U';
+		}else if(bttnLabel.equals("Monday")){
+			dayInitial = 'M';
+		}else if(bttnLabel.equals("Tuesday")){
+			dayInitial = 'T';
+		}else if(bttnLabel.equals("Wednesday")){
+			dayInitial = 'W';
+		}else if(bttnLabel.equals("Thursday")){
+			dayInitial = 'R';
+		}else if(bttnLabel.equals("Friday")){
+			dayInitial = 'F';
+		}else if(bttnLabel.equals("Saturday")){
+			dayInitial = 'S';
+		}else{
+			dayInitial = 0;
+		}
+		planList.addAll(currSchedule.listPlanNamesByDay(dayInitial));
+		planView.setItems(planList);
     }
 
 	@FXML
@@ -101,7 +122,7 @@ public class ScheduleController implements Initializable{
 	@FXML
 	void openBrowser(ActionEvent event) {
 		try {
-			BrowserData.prevMenu = 0;
+			BrowserData.prevMenu = 1;
 			BrowserData.menuType = 0;
 			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
@@ -126,7 +147,7 @@ public class ScheduleController implements Initializable{
 		sunBttn.setSelected(true);
 		currSchedule = new Schedule();
 		ObservableList<String> planList = FXCollections.observableArrayList();
-		planList.addAll(currSchedule.listPlanNames());
+		planList.addAll(currSchedule.listPlanNamesByDay('U'));
 		planView.setItems(planList);
 	}
 }

@@ -64,4 +64,21 @@ public class Schedule{
 		}
 		return planNames;
 	}
+
+	/**
+	 * Will filter plan names to the ones that match the day inputed in the function parameter
+	 * @param dayInitial parameter that represents a requested day by its assigned initial 
+	 * @return ArrayList of all the plan names are included by the day parameter
+	 */
+	public ArrayList<String> listPlanNamesByDay(char dayInitial){
+		ArrayList<String> planNames = new ArrayList<>();
+		for(Plan plan:scheduledPlans){
+			//test if the day is in the plan's String
+			if(plan.getDaysString().indexOf(dayInitial)!=-1){
+				//if true, add to planNames
+				planNames.add(plan.getName());
+			}
+		}
+		return planNames;
+	}
 }
