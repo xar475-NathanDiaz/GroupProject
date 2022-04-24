@@ -1,4 +1,8 @@
-# GroupProject
+# E-Genda
+Group 5
+Written by Aidan Chang, Nathan Diaz, Jorge Gonzalez, Alberto Arias, Devin Dunn
+
+E-Genda is a desktop application for students to organize their school schedule in order to be efficient with their time. It can be used to plan their classes, exams, and extracurriculars. The app has functionality to create recurring events and prevent overlapping scheduling.
 
 To clone and run the project:
 <ol>
