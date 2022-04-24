@@ -95,10 +95,8 @@ public class ScheduleController implements Initializable{
 			dayInitial = 'R';
 		}else if(bttnLabel.equals("Friday")){
 			dayInitial = 'F';
-		}else if(bttnLabel.equals("Saturday")){
+		}else{//default case, assumed to be Saturday
 			dayInitial = 'S';
-		}else{
-			dayInitial = 0;
 		}
 		planList.addAll(currSchedule.listPlanNamesByDay(dayInitial));
 		planView.setItems(planList);
