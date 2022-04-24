@@ -84,12 +84,16 @@ public class Schedule{
 		this.name = name;
 	}
 
-	public ArrayList<String> listPlanNames(){
-		ArrayList<String> planNames = new ArrayList<>();
-		for (Plan plan:scheduledPlans) {
-			planNames.add(plan.name);
+	public ArrayList<String> listPlanTimesByDay(char dayInitial){
+		ArrayList<String> planTimes = new ArrayList<>();
+		for(Plan plan:scheduledPlans){
+			//test if the day is in the plan's String
+			if(plan.getDaysString().indexOf(dayInitial)!=-1){
+				//if true, add to planNames
+				planTimes.add(plan.getTimeString());
+			}
 		}
-		return planNames;
+		return planTimes;
 	}
 
 	/**

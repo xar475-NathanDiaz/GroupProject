@@ -138,7 +138,9 @@ public class Plan{
 	public String getTimeString(){
 		int minutes = this.time%60;
 		int hours = (this.time/60)%60;
-		String timeString = Integer.toString(hours) + ":" + Integer.toString(minutes);
+		//this ensures that the minutes place is always 2 digits
+		String leadingZero = (minutes<10)?"0":"";
+		String timeString = Integer.toString(hours) + ":" + leadingZero + Integer.toString(minutes);
 		return timeString;
 	}
 

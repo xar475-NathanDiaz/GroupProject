@@ -35,8 +35,8 @@ public class ScheduleController implements Initializable{
 	@FXML
 	private Button browserBttn;
 
-    @FXML
-    private HBox daysBar;
+	@FXML
+	private HBox daysBar;
 
 	@FXML
 	private ToggleButton sunBttn;
@@ -59,14 +59,17 @@ public class ScheduleController implements Initializable{
 	@FXML
 	private ToggleButton satBttn;
 
-    @FXML
-    private ListView<String> planView;
+	@FXML
+	private ListView<String> planView;
+
+	@FXML
+	private ListView<String> timeView;
 
 	@FXML
 	private Button mainBttn;
 
-    @FXML
-    private Button saveBttn;
+	@FXML
+	private Button saveBttn;
 
 	@FXML
 	void addPlan(ActionEvent event) {
@@ -81,10 +84,12 @@ public class ScheduleController implements Initializable{
 		}
 	}
 
-    @FXML
-    void changeDayView(ActionEvent event) {
+	@FXML
+	void changeDayView(ActionEvent event) {
 		String bttnLabel = ((ToggleButton)event.getSource()).getText();
-		ObservableList<String> planList = FXCollections.observableArrayList();
+		ObservableList<String> planNameList = FXCollections.observableArrayList();
+		//need an extra list since the views areset by pointer and not by value as I initially thought
+		ObservableList<String> planTimeList = FXCollections.observableArrayList();
 		char dayInitial;
 		if(bttnLabel.equals("Sunday")){
 			dayInitial = 'U';
@@ -101,9 +106,12 @@ public class ScheduleController implements Initializable{
 		}else{//default case, assumed to be Saturday
 			dayInitial = 'S';
 		}
-		planList.addAll(currSchedule.listPlanNamesByDay(dayInitial));
-		planView.setItems(planList);
-    }
+		planNameList.addAll(currSchedule.listPlanNamesByDay(dayInitial));
+		planView.setItems(planNameList);
+
+		planTimeList.addAll(currSchedule.listPlanTimesByDay(dayInitial));
+		timeView.setItems(planTimeList);
+	}
 
 	@FXML
 	void mainMenu(ActionEvent event) {
@@ -133,8 +141,8 @@ public class ScheduleController implements Initializable{
 		}
 	}
 
-    @FXML
-    void saveSchedule(ActionEvent event) {
+	@FXML
+	void saveSchedule(ActionEvent event) {
 		if(schedName.getText().isEmpty()){
 			Schedule.loadFile = "";
 			return;
@@ -142,7 +150,7 @@ public class ScheduleController implements Initializable{
 		String pathFile = "data/"+schedName.getText()+".txt";
 		Schedule.loadFile = pathFile;
 		currSchedule.updateSchedule();
-    }
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -166,9 +174,14 @@ public class ScheduleController implements Initializable{
 		}
 
 		//from the schedule, load the plans
-		ObservableList<String> planList = FXCollections.observableArrayList();
-		planList.addAll(currSchedule.listPlanNamesByDay('U'));
-		planView.setItems(planList);
+		ObservableList<String> planNameList = FXCollections.observableArrayList();
+		planNameList.addAll(currSchedule.listPlanNamesByDay('U'));
+		planView.setItems(planNameList);
+
+		//load plan times
+		ObservableList<String> planTimeList = FXCollections.observableArrayList();
+		planTimeList.addAll(currSchedule.listPlanTimesByDay('U'));
+		timeView.setItems(planTimeList);
 
 		//from the scedule, load the name
 		schedName.setText(currSchedule.getName());
