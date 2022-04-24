@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PlannerController">
    <children>
-      <RadioButton layoutX="50.0" layoutY="142.0" mnemonicParsing="false" text="RadioButton" />
-      <RadioButton layoutX="50.0" layoutY="125.0" mnemonicParsing="false" text="RadioButton" />
-      <RadioButton layoutX="60.0" layoutY="175.0" mnemonicParsing="false" text="RadioButton" />
-      <RadioButton layoutX="60.0" layoutY="192.0" mnemonicParsing="false" text="RadioButton" />
-      <RadioButton layoutX="60.0" layoutY="221.0" mnemonicParsing="false" text="RadioButton" />
+      <Label layoutX="26.0" layoutY="49.0" text="Name of plan:" />
+      <Label layoutX="300.0" layoutY="49.0" text="Day(s) plan takes place:" />
+      <Label layoutX="300.0" layoutY="206.0" text="Time:" />
+      <Label layoutX="26.0" layoutY="92.0" text="Type of plan:" />
+      <Label layoutX="392.0" layoutY="200.0" text=":">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="cancelBttn" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelPlan" text="Cancel" />
+      <VBox fx:id="typeBttns" layoutX="26.0" layoutY="117.0" prefHeight="75.0" prefWidth="100.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="Class" />
+            <RadioButton mnemonicParsing="false" text="Assignment" />
+            <RadioButton mnemonicParsing="false" text="Exam" />
+            <RadioButton mnemonicParsing="false" text="Study time" />
+            <RadioButton mnemonicParsing="false" text="Extracurricular" />
+         </children>
+      </VBox>
+      <VBox fx:id="dayBttns" layoutX="300.0" layoutY="66.0" prefHeight="109.0" prefWidth="100.0">
+         <children>
+            <CheckBox mnemonicParsing="false" text="Sunday" />
+            <CheckBox mnemonicParsing="false" text="Monday" />
+            <CheckBox mnemonicParsing="false" text="Tuesday" />
+            <CheckBox mnemonicParsing="false" text="Wednesday" />
+            <CheckBox mnemonicParsing="false" text="Thursday" />
+            <CheckBox mnemonicParsing="false" text="Friday" />
+            <CheckBox mnemonicParsing="false" text="Saturday" />
+         </children>
+      </VBox>
+      <TextField fx:id="nameField" layoutX="102.0" layoutY="45.0" />
+      <Button fx:id="saveBttn" layoutX="519.0" layoutY="361.0" mnemonicParsing="false" onAction="#savePlan" text="Save Plan" />
+      <Spinner fx:id="hourSelector" editable="true" layoutX="335.0" layoutY="202.0" prefHeight="25.0" prefWidth="52.0" />
+      <Spinner fx:id="minuteSelector" editable="true" layoutX="400.0" layoutY="202.0" prefHeight="25.0" prefWidth="53.0" />
+      <ChoiceBox fx:id="amPmSelector" layoutX="463.0" layoutY="202.0" prefHeight="25.0" prefWidth="52.0" />
    </children>
 </AnchorPane>

@@ -1,6 +1,6 @@
 package application.model;
 
-class Plan{
+public class Plan{
 	/**
 	 * Enum to specify what type of plan this is.
 	 * The enum will be able to change how the plan is displayed
@@ -49,6 +49,24 @@ class Plan{
 
 	public void setName(String name){
 		this.name = name;
+	}
+
+	public static String dayNameToInitial(String day){
+		if(day.equals("Monday")){
+			return "M";
+		}else if(day.equals("Tuesday")){
+			return "T";
+		}else if(day.equals("Wednesday")){
+			return "W";
+		}else if(day.equals("Thursday")){
+			return "R";
+		}else if(day.equals("Friday")){
+			return "F";
+		}else if(day.equals("Saturday")){
+			return "S";
+		}else{//default state, falls back to Sunday
+			return "U";
+		}
 	}
 
 	/**
@@ -146,61 +164,50 @@ class Plan{
 		this.time =  hours*60+minutes;
 	}
 
+	/**
+	 * @return the string representation of the plan type for writing to a file
+	 */
 	public String getPlanTypeAsString(){
 		switch(this.type){
-			case COURSE:
-				return "course";
 			case STUDY:
-				return "study";
+				return "Study time";
 			case ASSIGN:
-				return "assignment";
+				return "Assignment";
 			case EXAM:
-				return "exam";
+				return "Exam";
 			case EXTRACURR:
-				return "extracurricular";
+				return "Extracurricular";
+			case COURSE:
 			default:
-				return "";
-		}
-	}
-
-	public void setPlanFromString(String typeString){
-		if(typeString.equals("course")){
-			this.type = planType.COURSE;
-		}else if(typeString.equals("study")){
-			this.type = planType.STUDY;
-		}else if(typeString.equals("assignment")){
-			this.type = planType.ASSIGN;
-		}else if(typeString.equals("exam")){
-			this.type = planType.EXAM;
-		}else if(typeString.equals("extracurricular")){
-			this.type = planType.EXTRACURR;
+				return "Class";
 		}
 	}
 
 	/**
-	 * Returns a string for this object in the format "A [type] called [name] taking place on: [days] at [time]"
+	 * To be used when reading from a file or from the button labels on PlannerController.
+	 * The model is set up so that there is no difference between the typeStrings written to the schedule files and the button labels.
+	 * This allows for as little error as possible.
+	 * @param typeString a string representation of the plan type
+	 */
+	public void setPlanFromString(String typeString){
+		if(typeString.equals("Study time")){
+			this.type = planType.STUDY;
+		}else if(typeString.equals("Assignment")){
+			this.type = planType.ASSIGN;
+		}else if(typeString.equals("Exam")){
+			this.type = planType.EXAM;
+		}else if(typeString.equals("Extracurricular")){
+			this.type = planType.EXTRACURR;
+		}else{//this is the default case, whether the parameter is "Class" or not
+			this.type = planType.COURSE;
+		}
+	}
+
+	/**
+	 * Returns a string for this object in csv format for writing to schedule files
 	 */
 	@Override
 	public String toString(){
-		String objString = "";
-		switch(this.type){
-			case COURSE:
-				objString = "A class called " + this.name + " taking place on: ";
-				break;
-			case STUDY:
-				objString = "A Study time called " + this.name + " taking place on: ";
-				break;
-			case ASSIGN:
-				objString = "An Assignment called " + this.name + "due on: ";
-				break;
-			case EXAM:
-				objString = "An exam called " + this.name + " taking place on: ";
-				break;
-			case EXTRACURR:
-				objString = "An extracurricular called " + this.name + " taking place on: ";
-				break;
-		}
-		objString = objString + getDaysString() + " at " + getTimeString();
-		return objString;
+		return getPlanTypeAsString()+","+getName()+","+getDaysString()+","+Integer.toString(getTime())+"\n";
 	}
 }

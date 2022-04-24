@@ -1,7 +1,9 @@
 package application.model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -65,6 +67,11 @@ public class Schedule{
 		}
 	}
 
+	public void addPlan(Plan newPlan){
+		this.scheduledPlans.add(newPlan);
+		updateSchedule();
+	}
+
 	public String getName(){
 		return this.name;
 	}
@@ -96,5 +103,19 @@ public class Schedule{
 			}
 		}
 		return planNames;
+	}
+
+	public void updateSchedule(){
+		try {
+			FileWriter out = new FileWriter(loadFile);
+			BufferedWriter writer = new BufferedWriter(out);
+			writer.append("schedule\n");
+			for (Plan plan : scheduledPlans) {
+				writer.append(plan.toString());
+			}
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
