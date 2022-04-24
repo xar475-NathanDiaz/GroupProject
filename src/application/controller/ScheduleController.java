@@ -134,6 +134,7 @@ public class ScheduleController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//group all the day buttons into a groups so that they are all mutually exclusive
 		ToggleGroup group = new ToggleGroup();
 		sunBttn.setToggleGroup(group);
 		monBttn.setToggleGroup(group);
@@ -143,9 +144,16 @@ public class ScheduleController implements Initializable{
 		friBttn.setToggleGroup(group);
 		satBttn.setToggleGroup(group);
 		sunBttn.setSelected(true);
+
+		//create the schedule object for the controller
 		currSchedule = new Schedule();
+
+		//from the schedule, load the plans
 		ObservableList<String> planList = FXCollections.observableArrayList();
 		planList.addAll(currSchedule.listPlanNamesByDay('U'));
 		planView.setItems(planList);
+
+		//from the scedule, load the name
+		schedName.setText(currSchedule.getName());
 	}
 }

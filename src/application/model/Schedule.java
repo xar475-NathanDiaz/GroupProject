@@ -10,14 +10,30 @@ public class Schedule{
 	String name;
 	ArrayList<Plan> scheduledPlans;
 
+	/**
+	 * loads a new Schedule object from the file indicated by loadFile
+	 */
 	public Schedule(){
 		scheduledPlans = new ArrayList<>();
+		this.name = trimPathFromName(loadFile);
+		if(loadFile==null||loadFile.isEmpty()){
+			return;
+		}
 		initPlanList(loadFile);
 	}
 
-	public Schedule(String fileName, String name){
-		this();
-		this.name = name;
+	/**
+	 * Method used in the schedule constructor to trim the extra characters that make up the relative pathname from the schedule name
+	 * Inside the current pathname, the schedule name is surrounded by "data/" and ".txt"
+	 * @param currPath the current string which schedule name is a substring of
+	 * @return The desired schedule name
+	 */
+	private String trimPathFromName(String currPath){
+		//first, take off the "data/" from the path
+		String trimedPath = currPath.split("/",2)[1];
+		//next, take off the ".txt" from the path
+		trimedPath = trimedPath.split("\\.")[0];
+		return trimedPath;
 	}
 
 	private void initPlanList(String fileName){
@@ -25,7 +41,7 @@ public class Schedule{
 		try {
 			in = new FileReader(fileName);
 			BufferedReader reader = new BufferedReader(in);
-			//skip the first line since that is the header known to be "schedule"
+			//skip first line since the header is uneeded
 			reader.readLine();
 			String buff = "";
 			while((buff = reader.readLine())!=null){
