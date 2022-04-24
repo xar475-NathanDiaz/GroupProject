@@ -20,32 +20,12 @@ public class MainController implements Initializable{
 
 	@FXML
 	private AnchorPane anchor;
-	 
-	@FXML
-	private Button createScheduleBttn;
 
 	@FXML
 	private Button openScheduleBttn;
 
 	@FXML
 	private Button profileBttn;
-
-	@FXML
-	void createSchedule(ActionEvent event) {
-		try {
-			BrowserData.prevMenu = 0;
-			BrowserData.menuType = 1;
-			URL url = new File("src/application/view/Schedule.fxml").toURI().toURL();
-			Parent root = FXMLLoader.load(url);
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			Scene scene = new Scene(root);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			window.setScene(scene);
-			window.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	@FXML
 	void openProfile(ActionEvent event) {

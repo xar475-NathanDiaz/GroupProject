@@ -31,6 +31,10 @@ public class Schedule{
 	 * @return The desired schedule name
 	 */
 	private String trimPathFromName(String currPath){
+		//return if currPath is empty
+		if(currPath.isEmpty()){
+			return "";
+		}
 		//first, take off the "data/" from the path
 		String trimedPath = currPath.split("/",2)[1];
 		//next, take off the ".txt" from the path
@@ -106,6 +110,10 @@ public class Schedule{
 	}
 
 	public void updateSchedule(){
+		//return if loadFile is empty
+		if(loadFile.isEmpty()){
+			return;
+		}
 		try {
 			FileWriter out = new FileWriter(loadFile);
 			BufferedWriter writer = new BufferedWriter(out);

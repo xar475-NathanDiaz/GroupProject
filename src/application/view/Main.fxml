@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
    <children>
       <Label layoutX="223.0" layoutY="78.0" text="E-Genda">
          <font>
@@ -18,7 +15,6 @@
          </font>
       </Label>
       <Label layoutX="232.0" layoutY="137.0" text="the scheduler for students" textFill="#808080" />
-      <Button fx:id="createScheduleBttn" layoutX="234.0" layoutY="206.0" mnemonicParsing="false" onAction="#createSchedule" text="Create a new schedule" />
       <Button fx:id="openScheduleBttn" layoutX="235.0" layoutY="246.0" mnemonicParsing="false" onAction="#openSchedule" text="Open a new schedule" />
       <Button fx:id="profileBttn" layoutX="254.0" layoutY="283.0" mnemonicParsing="false" onAction="#openProfile" text="Open a profile" />
       <ImageView fitHeight="178.0" fitWidth="165.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">

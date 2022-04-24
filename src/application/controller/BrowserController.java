@@ -36,13 +36,6 @@ public class BrowserController implements Initializable{
 		String selectedItem = itemList.getSelectionModel().getSelectedItem();
 		int selectionIndex = itemList.getSelectionModel().getSelectedIndex();
 		int listLength = itemList.getItems().size();
-		//test if the user has selected a new item
-		if(selectionIndex==listLength-1){
-			//TODO open a blank menu, create blank file/object
-			System.out.println("New items are unimplemented");
-			//this return is temporary, should be taken out when new items are implemented
-			return;
-		}
 		try {
 			//if the menuType is 0, load Schedule.fxml, else load Profile.fxml
 			URL url;
@@ -52,6 +45,10 @@ public class BrowserController implements Initializable{
 			}else{
 				url = new File("src/application/view/Profile.fxml").toURI().toURL();
 				Profile.loadFile = "data/"+selectedItem;
+			}
+			//test if the user has selected a new item, if true, overwrite that for a blank string
+			if(selectionIndex==listLength-1){
+				Schedule.loadFile = "";
 			}
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -63,9 +60,6 @@ public class BrowserController implements Initializable{
 		
 	}
 
-	//TODO: when going back to the previous menu, need to load the data the program displaying too
-	//if loadFile wasn't changed since last time, then this might not be a problem
-	//can't guarantee this however
 	@FXML
 	void prevMenu(ActionEvent event) {
 		int prevMenu = BrowserData.prevMenu;

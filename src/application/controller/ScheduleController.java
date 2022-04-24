@@ -16,8 +16,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
@@ -27,7 +27,7 @@ public class ScheduleController implements Initializable{
 	private Schedule currSchedule;
 
 	@FXML
-	private Label schedName;
+	private TextField schedName;
 
 	@FXML
 	private Button planBttn;
@@ -64,6 +64,9 @@ public class ScheduleController implements Initializable{
 
 	@FXML
 	private Button mainBttn;
+
+    @FXML
+    private Button saveBttn;
 
 	@FXML
 	void addPlan(ActionEvent event) {
@@ -132,6 +135,17 @@ public class ScheduleController implements Initializable{
 		}
 	}
 
+    @FXML
+    void saveSchedule(ActionEvent event) {
+		if(schedName.getText().isEmpty()){
+			Schedule.loadFile = "";
+			return;
+		}
+		String pathFile = "data/"+schedName.getText()+".txt";
+		Schedule.loadFile = pathFile;
+		currSchedule.updateSchedule();
+    }
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//group all the day buttons into a groups so that they are all mutually exclusive
@@ -147,6 +161,11 @@ public class ScheduleController implements Initializable{
 
 		//create the schedule object for the controller
 		currSchedule = new Schedule();
+
+		//if Schedule.loadFile blank/empty, then that means this is a new schedule, and shouldn't load any plans
+		if(Schedule.loadFile.isEmpty()){
+			return;
+		}
 
 		//from the schedule, load the plans
 		ObservableList<String> planList = FXCollections.observableArrayList();
