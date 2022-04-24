@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.model.BrowserData;
-import application.model.Profile;
 import application.model.Schedule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,15 +36,8 @@ public class BrowserController implements Initializable{
 		int selectionIndex = itemList.getSelectionModel().getSelectedIndex();
 		int listLength = itemList.getItems().size();
 		try {
-			//if the menuType is 0, load Schedule.fxml, else load Profile.fxml
-			URL url;
-			if(BrowserData.menuType==0){
-				url = new File("src/application/view/Schedule.fxml").toURI().toURL();
-				Schedule.loadFile = "data/"+selectedItem;
-			}else{
-				url = new File("src/application/view/Profile.fxml").toURI().toURL();
-				Profile.loadFile = "data/"+selectedItem;
-			}
+			URL url = new File("src/application/view/Schedule.fxml").toURI().toURL();
+			Schedule.loadFile = "data/"+selectedItem;
 			//test if the user has selected a new item, if true, overwrite that for a blank string
 			if(selectionIndex==listLength-1){
 				Schedule.loadFile = "";

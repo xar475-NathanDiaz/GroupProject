@@ -10,16 +10,8 @@ public class BrowserData {
 	 * this is a int that represents the previous menu for the back button
 	 * 0=Main
 	 * 1=Schedule
-	 * 2=Profile
 	 */
 	public static int prevMenu;
-
-	/**
-	 * this is an int that represents what type of items the menu should display and open
-	 * 0=Schedules
-	 * 1=Profiles
-	 */
-	public static int menuType;
 
 	/**
 	 * this method finds all files in the data directory with the corresponding item type
@@ -40,8 +32,8 @@ public class BrowserData {
 				String headerLine = buff.readLine();
 				//close reader as soon as possible
 				buff.close();
-				//check that the file header is equal to the list type before adding
-				if((headerLine.equals("schedule")&&BrowserData.menuType==0) || (headerLine.equals("profile")&&BrowserData.menuType==1)){
+				//check that the file header is schedule
+				if(headerLine.equals("schedule")){
 					fileNames.add(file.getName());
 				}
 			}

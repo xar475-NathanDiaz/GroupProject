@@ -109,7 +109,6 @@ public class ScheduleController implements Initializable{
 	void mainMenu(ActionEvent event) {
 		try {
 			BrowserData.prevMenu = 0;
-			BrowserData.menuType = 0;
 			URL url = new File("src/application/view/Main.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -124,7 +123,6 @@ public class ScheduleController implements Initializable{
 	void openBrowser(ActionEvent event) {
 		try {
 			BrowserData.prevMenu = 1;
-			BrowserData.menuType = 0;
 			URL url = new File("src/application/view/ItemBrowser.fxml").toURI().toURL();
 			Parent root = FXMLLoader.load(url);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
