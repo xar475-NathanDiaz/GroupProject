@@ -1,4 +1,0 @@
-profile
-student name,3.50
-plan 1,plan 2,plan 3,plan 4
-schedule A,schedule B, schedule C, schedule D

@@ -36,21 +36,26 @@ public class Plan{
 	public Plan(){
 	}
 
-	public Plan(String name, int days, int time, planType type){
-		this.name = name;
-		this.days = days;
-		this.time = time;
-		this.type = type;
-	}
-
+	/**
+	 * @return This plan's name
+	 */
 	public String getName(){
 		return this.name;
 	}
 
+	/**
+	 * sets this plan's name
+	 * @param name the name to set
+	 */
 	public void setName(String name){
 		this.name = name;
 	}
 
+	/**
+	 * used in PlannerController to get button labels to transform into usable data for a plan object
+	 * @param day String that comes from a button label
+	 * @return Single character string that represents each day, U for sunday, M for monday, etc.
+	 */
 	public static String dayNameToInitial(String day){
 		if(day.equals("Monday")){
 			return "M";
@@ -131,10 +136,16 @@ public class Plan{
 		this.days = dayNum;
 	}
 
+	/**
+	 * @return this plan's time
+	 */
 	public int getTime(){
 		return this.time;
 	}
 
+	/**
+	 * @return this plan's time as a string for printing to the user
+	 */
 	public String getTimeString(){
 		int minutes = this.time%60;
 		int hours = (this.time/60)%60;
@@ -144,26 +155,12 @@ public class Plan{
 		return timeString;
 	}
 
+	/**
+	 * Sets this plan's time
+	 * @param time the time for this plan in minutes since midnight
+	 */
 	public void setTime(int time){
 		this.time = time;
-	}
-
-	public void setTimeFromString(String timeString){
-		String[] digits = timeString.split(":");
-		int hours;
-		int minutes;
-		//digits should only be 2 elements large if the string was formatted correctly
-		try {
-			hours = Integer.valueOf(digits[0]);
-		} catch (NumberFormatException e) {
-			hours = 0;
-		}
-		try {
-			minutes = Integer.valueOf(digits[1]);
-		} catch (NumberFormatException e) {
-			minutes = 0;
-		}
-		this.time =  hours*60+minutes;
 	}
 
 	/**
