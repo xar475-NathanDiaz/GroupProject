@@ -42,6 +42,10 @@ public class Schedule{
 		return trimedPath;
 	}
 
+	/**
+	 * populate's this schedule's planList with plans from the schedule file indicated by fileName
+	 * @param fileName path to a schedule file
+	 */
 	private void initPlanList(String fileName){
 		FileReader in;
 		try {
@@ -71,19 +75,28 @@ public class Schedule{
 		}
 	}
 
+	/**
+	 * Adds a plan to this schedule without calling this schdule's plan list first
+	 * Also updates the schedule's file
+	 * @param newPlan plan object to be added to this schedule
+	 */
 	public void addPlan(Plan newPlan){
 		this.scheduledPlans.add(newPlan);
 		updateSchedule();
 	}
 
+	/**
+	 * @return this schedule's name
+	 */
 	public String getName(){
 		return this.name;
 	}
 
-	public void setName(String name){
-		this.name = name;
-	}
-
+	/**
+	 * Will filter plan times to the ones that match the day inputed in the function parameter
+	 * @param dayInitial parameter that represents a requested day by its assigned initial 
+	 * @return ArrayList of all the plan times are included by the day parameter
+	 */
 	public ArrayList<String> listPlanTimesByDay(char dayInitial){
 		ArrayList<String> planTimes = new ArrayList<>();
 		for(Plan plan:scheduledPlans){
@@ -113,6 +126,9 @@ public class Schedule{
 		return planNames;
 	}
 
+	/**
+	 * overwrites the current schedule file with this schedule's current contents
+	 */
 	public void updateSchedule(){
 		//return if loadFile is empty
 		if(loadFile.isEmpty()){
